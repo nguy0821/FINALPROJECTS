@@ -40,6 +40,7 @@ open class GeoToolBar: AppCompatActivity(){
             R.id.APItn ->{
                 val intent = Intent()
                 intent.action = Intent.ACTION_VIEW
+
                 intent.addCategory(Intent.CATEGORY_BROWSABLE)
                 intent.data = Uri.parse("https://www.geodatasource.com/web-service")
                 startActivity(intent)
