@@ -1,12 +1,14 @@
 package com.example.finalproject.geo
 
 import android.content.Intent
+import android.net.Uri
 import android.text.InputType
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.finalproject.R
 
 
 open class GeoToolBar: AppCompatActivity(){
@@ -24,10 +26,25 @@ open class GeoToolBar: AppCompatActivity(){
      */
 
 
-    open fun onOptionsItemSelected(item: MenuItem): Boolean {
-        //Look at your menu XML file. Put a case for every id in that file:
-        when (item.itemId) {
-            R.id.donate_toolbar -> {
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+
+
+                        R.id.tbInstruction -> {
+                val alertDialogBuilder = AlertDialog.Builder(this)
+               alertDialogBuilder.setTitle("Input the lattitude and longititude. After that click Search button, the destination will appear. If U want save this destination, U can click on the save icon to memorize.")
+                alertDialogBuilder.setNegativeButton("Exit", null)
+                alertDialogBuilder.create().show()
+            }
+            R.id.APItn ->{
+                val intent = Intent()
+                intent.action = Intent.ACTION_VIEW
+                intent.addCategory(Intent.CATEGORY_BROWSABLE)
+                intent.data = Uri.parse("https://www.geodatasource.com/web-service")
+                startActivity(intent)
+            }
+                        R.id.tbDonate -> {
                 val alertDialogBuilder1 = AlertDialog.Builder(this)
                 alertDialogBuilder1.setTitle("Give me generously $$$")
                 alertDialogBuilder1.setMessage("How much money do you want to donate?")
@@ -41,24 +58,7 @@ open class GeoToolBar: AppCompatActivity(){
                 val dialog = alertDialogBuilder1.create()
                 dialog.show()
             }
-            R.id.API_toolbar -> {
-                val intent = Intent()
-                intent.action = Intent.ACTION_VIEW
-                intent.addCategory(Intent.CATEGORY_BROWSABLE)
-                intent.data = Uri.parse("https://lyricsovh.docs.apiary.io/#")
-                startActivity(intent)
-            }
-            R.id.instruction_toolbar -> {
-                val alertDialogBuilder = AlertDialog.Builder(this)
-               alertDialogBuilder.setTitle("Click a title to view the details. Click Favourite with option note, to save an article to Favourites.")
-                alertDialogBuilder.setNegativeButton("Exit", null)
-                alertDialogBuilder.create().show()
-            }
-        }
-        return true
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+
             R.id.tbABout ->{
                 val about = layoutInflater.inflate(R.layout.geo_about_dialog, null)
 
@@ -68,6 +68,7 @@ open class GeoToolBar: AppCompatActivity(){
                         .setView(about)
                 builder.create().show()
             }
+
             R.id.tbSaved ->{
                 startActivity(Intent(applicationContext, SavedCities::class.java))
             }

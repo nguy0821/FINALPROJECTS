@@ -4,7 +4,8 @@
 
     <item
         android:id="@+id/tbABout"
-        android:title="About"
+        android:title="Inst"
+        android:icon="@drawable/ic_infor"
         app:showAsAction="always" />
     <item
         android:id="@+id/tbSaved"
@@ -13,12 +14,21 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/tbDonate"
-        android:icon="@drawable/icons8-money-24.png"
+        android:icon="@drawable/donate"
         android:title="Donate"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/APItn"
+        android:icon="@drawable/ic_api"
+        android:title="Donate"
+        app:showAsAction="always" />
+
     <item
         android:id="@+id/tbInstruction"
         android:title="Ins"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        android:icon="@drawable/ic_api"
+        />
 
 </menu>
